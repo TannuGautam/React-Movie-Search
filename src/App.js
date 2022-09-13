@@ -1,25 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Search from "./components/Search";
+import { useState } from "react";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import RadioGroup from "@mui/material/RadioGroup";
+import Radio from "@mui/material/Radio";
+import FormControlLabel from "@mui/material/FormControlLabel";
 
-function App() {
+
+const App = () => {
+  const [val, setVal] = useState("actor");
+
+  const handleChange = (e) => {
+    setVal(e.target.value);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container style={{backgroundColor: "#5B2A8C",minHeight:"100vh"}} maxWidth={false}>
+          <Typography variant="h2" color="#fff" gutterBottom>
+            TVmaze
+          </Typography>
+
+          <Typography variant="h5" color="#fff" gutterBottom>
+            Search your favorite shows
+          </Typography>
+
+          <RadioGroup row aria-labelledby="demo-controlled-radio-buttons-group" defaultValue={val} name="controlled-radio-buttons-group" value={val} onChange={handleChange}>
+            <FormControlLabel value="actor" sx={{color:"#fff"}} control={<Radio />} label="Actors" />
+            <FormControlLabel value="shows" sx={{color:"#fff"}} control={<Radio />} label="Shows" />
+          </RadioGroup>
+
+          {/* <input
+            type="radio"
+            name="sel"
+            value="actor"
+            defaultChecked
+            onChange={handleChange}
+          ></input>
+          <label>Actor</label>
+
+          <input
+            type="radio"
+            name="sel"
+            value="shows"
+            onChange={handleChange}
+          ></input>
+          <label>Shows</label> */}
+
+          <Search val={val}></Search>
+    </Container>
   );
-}
+};
 
 export default App;
