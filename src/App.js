@@ -25,27 +25,18 @@ const App = () => {
             Search your favorite shows
           </Typography>
 
+          <br></br>
+
           <RadioGroup row aria-labelledby="demo-controlled-radio-buttons-group" defaultValue={val} name="controlled-radio-buttons-group" value={val} onChange={handleChange}>
             <FormControlLabel value="actor" sx={{color:"#fff"}} control={<Radio />} label="Actors" />
             <FormControlLabel value="shows" sx={{color:"#fff"}} control={<Radio />} label="Shows" />
           </RadioGroup>
 
-          {/* <input
-            type="radio"
-            name="sel"
-            value="actor"
-            defaultChecked
-            onChange={handleChange}
-          ></input>
-          <label>Actor</label>
+          <br></br>
 
-          <input
-            type="radio"
-            name="sel"
-            value="shows"
-            onChange={handleChange}
-          ></input>
-          <label>Shows</label> */}
+          <Typography variant="h6" color="yellow" gutterBottom>
+            {(val === "actor") ? "Enter people below" : "Enter shows below" }
+          </Typography>
 
           <Search val={val}></Search>
     </Container>
